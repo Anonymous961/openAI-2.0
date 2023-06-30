@@ -2,7 +2,9 @@ const openai = require("../config/openaiConfig");
 
 const generateMeta = async (req, res) => {
   const { title } = req.body;
-
+  // console.log(req.body);
+  // console.log(title);
+  // res.status(200).json({ message: "helloo message received!" });
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: [{ role: "user", content: `${title}` }],
