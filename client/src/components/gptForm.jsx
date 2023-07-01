@@ -29,20 +29,24 @@ const GptForm = () => {
     // setData(json.message.content);
   };
   return (
-    <div className="gpt">
-      <h1>Chatgpt</h1>
-      <form onSubmit={handleClick}>
+    <div className="gpt mx-5">
+      <h1 className="text-5xl font-bold my-10">Chatgpt</h1>
+      <form onSubmit={handleClick} className=" flex flex-col ">
         <label>Ask anything</label>
         <input
           type="text"
           value={title}
+          className="border-2 border-rose-500 rounded-md px-1 my-2 w-80"
           onChange={(e) => {
             setTitle(e.target.value);
           }}
           required
           placeholder="generate a email for friend"
         />
-        <input type="submit" />
+        <input
+          type="submit"
+          className="border-2 border-black rounded-lg w-80 bg-slate-500"
+        />
       </form>
       <div className="content">{data}</div>
     </div>

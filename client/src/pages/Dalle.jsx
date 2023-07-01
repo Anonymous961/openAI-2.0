@@ -20,20 +20,24 @@ const Dalle = () => {
     setUrl(response.data.url);
   };
   return (
-    <div className="dalle">
-      <h1>Dall-e</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="dalle mx-5">
+      <h1 className="text-5xl font-bold my-10">Dall-e</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col">
         <label>Ask for anything</label>
         <input
           type="text"
           value={prompt}
+          className="border-2 border-rose-500 rounded-md px-1 my-2 w-80"
           onChange={(e) => setPrompt(e.target.value)}
           required
           placeholder="a cute chick"
         />
-        <input type="submit" />
+        <input
+          type="submit"
+          className=" border-2 border-black rounded-lg w-80 bg-slate-500"
+        />
       </form>
-      {url && <img src={url} alt="" />}
+      {url && <img className="float-right" src={url} width="500px" alt="" />}
     </div>
   );
 };
