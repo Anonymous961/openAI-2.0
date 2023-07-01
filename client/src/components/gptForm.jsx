@@ -30,6 +30,7 @@ const GptForm = () => {
   };
   return (
     <div className="gpt">
+      <h1>Chatgpt</h1>
       <form onSubmit={handleClick}>
         <label>Ask anything</label>
         <input

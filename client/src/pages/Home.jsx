@@ -1,10 +1,12 @@
-import GptForm from "../components/gptForm";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <div className="home">
       <h1>Home</h1>
-      <GptForm />
+      <Link to="/chatgpt">ChatGpt</Link>
+      <Link to="/Dall-e">Dall-e</Link>
+      {/* <GptForm /> */}
     </div>
   );
 };
