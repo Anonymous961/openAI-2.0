@@ -4,8 +4,11 @@ import { useState } from "react";
 const Dalle = () => {
   const [prompt, setPrompt] = useState("");
   const [url, setUrl] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setUrl("");
+    setIsLoading(true);
     // console.log(prompt);
     const response = await axios.post(
       "http://localhost:4000/openai/image",
@@ -16,8 +19,9 @@ const Dalle = () => {
         headers: { "Content-Type": "application/json" },
       }
     );
-    console.log(response.data);
+    // console.log(response.data);
     setUrl(response.data.url);
+    setIsLoading(false);
   };
   return (
     <div className="dalle grid grid-cols-3 bg-cover px-5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen py-10">
@@ -35,13 +39,29 @@ const Dalle = () => {
           />
           <input
             type="submit"
-            className=" shadow-2xl py-2 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300 text-white  rounded-lg w-80 bg-sky-500"
+            className=" shadow-2xl py-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300 text-white  rounded-lg w-80 bg-sky-500"
           />
         </form>
       </div>
-      <div className="bg-white col-span-2 p-10 rounded-md max-h-screen ">
+      <div className="bg-white grid justify-items-center items-center col-span-2 p-10 rounded-md max-h-screen ">
+        {isLoading && (
+          <div
+            className="inline-block h-8 w-8 animate-spin  rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+            role="status"
+          >
+            <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+              Loading...
+            </span>
+          </div>
+        )}
+        <img className="float-right max-h-96 max-w-full" src={url} alt="" />
         {url && (
-          <img className="float-right max-h-full max-w-full" src={url} alt="" />
+          <button
+            className="bg-green-200 p-4 rounded-md shadow-md transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-300 duration-300"
+            onClick={handleSubmit}
+          >
+            Regenerate
+          </button>
         )}
       </div>
     </div>

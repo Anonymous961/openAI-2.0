@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.typing-animation {
+  overflow: hidden;
+  animation: typing 1s steps(40) 1s 1 normal both;
+}

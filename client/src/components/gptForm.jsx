@@ -4,8 +4,11 @@ import axios from "axios";
 const GptForm = () => {
   const [title, setTitle] = useState("");
   const [data, setData] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const handleClick = async (e) => {
     e.preventDefault();
+    setData("");
+    setIsLoading(true);
     const response = await axios.post(
       "http://localhost:4000/openai/meta",
       {
@@ -19,20 +22,31 @@ const GptForm = () => {
     );
     console.log(response.data.message.content);
     setData(response.data.message.content);
-    // const response = await axios.post("http://localhost:4000/openai/meta", {
-    //   method: "POST",
-    //   headers: { "Content-type": "application/json" },
-    //   body: JSON.stringify({ title }),
-    // });
-    // const json = await response.json();
-    // console.log(json.message.content);
-    // setData(json.message.content);
+    setIsLoading(false);
   };
 
   return (
     <div className="gpt grid grid-cols-3 bg-cover px-5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen py-10">
-      <div className="content bg-white col-span-2 rounded-md shadow-xl p-10 ">
+      <div className="content bg-white grid justify-items-center items-center col-span-2 rounded-md shadow-xl p-10 ">
+        {isLoading && (
+          <div
+            className="inline-block h-8 w-8 animate-spin  rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+            role="status"
+          >
+            <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+              Loading...
+            </span>
+          </div>
+        )}
         <p className="typing-animation">{data}</p>
+        {data && (
+          <button
+            className="bg-green-200 p-4 rounded-md shadow-md transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-300 duration-300"
+            onClick={handleClick}
+          >
+            Regenerate
+          </button>
+        )}
       </div>
       <div className="mx-5">
         <h1 className="text-5xl font-bold text-indigo-600 my-10">Chatgpt</h1>
@@ -50,7 +64,7 @@ const GptForm = () => {
           />
           <input
             type="submit"
-            className="shadow-2xl py-2 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 text-white  rounded-lg w-80 bg-sky-500"
+            className="shadow-2xl py-2 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 text-white  rounded-lg w-80 bg-sky-500"
           />
         </form>
       </div>
