@@ -25,22 +25,33 @@ const Navbar = () => {
         OpenAI
       </h1>
       <div className="navs">
-        <ul className="flex justify-evenly items-center text-xl text-white">
-          <li className=" mx-2 " onClick={checkUser}>
-            <Link to="/chatgpt">Chatgpt</Link>
-          </li>
-          <li className="mx-2" onClick={checkUser}>
-            <Link to="/dall-e">Dall-e</Link>
-          </li>
-          {user && (
-            <button
-              className="border-2 p-2 rounded-md hover:text-red-500 "
-              onClick={handleClick}
-            >
-              Logout
-            </button>
-          )}
-        </ul>
+        {user ? (
+          <ul className="flex justify-evenly items-center text-xl text-white">
+            <li className=" mx-2 " onClick={checkUser}>
+              <Link to="/chatgpt">Chatgpt</Link>
+            </li>
+            <li className="mx-2" onClick={checkUser}>
+              <Link to="/dall-e">Dall-e</Link>
+            </li>
+            {user && (
+              <button
+                className="border-2 p-2 rounded-md hover:text-red-500 "
+                onClick={handleClick}
+              >
+                Logout
+              </button>
+            )}
+          </ul>
+        ) : (
+          <ul className="flex justify-evenly items-center text-xl text-white">
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/signup">Signup</Link>
+            </li>
+          </ul>
+        )}
       </div>
     </div>
   );

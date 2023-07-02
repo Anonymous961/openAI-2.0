@@ -10,7 +10,6 @@ export const useSignup = () => {
   const signup = async (name, email, password) => {
     setIsLoading(true);
     setError(null);
-
     try {
       const response = await axios.post(
         "http://localhost:4000/api/user/signup",
@@ -21,14 +20,12 @@ export const useSignup = () => {
           },
         }
       );
-      //   console.log(response);
-      //   console.log("got the response");
+
       localStorage.setItem("user", JSON.stringify(response.data));
       dispatch({ type: "LOGIN", payload: response.data });
       setIsLoading(false);
       setError(null);
     } catch (error) {
-      //   console.log(error.response.data.error);
       setError(error.response.data.error);
       setIsLoading(false);
     }
