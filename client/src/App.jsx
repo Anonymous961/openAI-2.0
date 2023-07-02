@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import GptForm from "./components/gptForm";
 import Navbar from "./components/navbar";
 import Dalle from "./pages/Dalle";
+import Signup from "./pages/signup";
+import Login from "./pages/login";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/chatgpt" element={<GptForm />} />
         <Route exact path="/dall-e" element={<Dalle />} />
+        <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/login" element={<Login />} />
       </Routes>
     </Router>
   );

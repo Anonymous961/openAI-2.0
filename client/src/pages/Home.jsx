@@ -47,7 +47,7 @@ const Home = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-10 h-10 my-5"
+            className="w-12 h-12 my-5"
           >
             <path
               strokeLinecap="round"
