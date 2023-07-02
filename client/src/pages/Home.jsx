@@ -1,11 +1,37 @@
 import { Link } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Home = () => {
+  const { user } = useAuthContext();
   return (
     <div className="home bg-gradient-to-r from-indigo-500 to-orange-500 min-h-screen py-10 flex flex-col items-center">
       {/* <h1 className="text-4xl font-bold text-slate-200 m-5 mx-11">Home</h1> */}
       <div className="bg-slate-200 w-2/3 p-8 mb-3 rounded-xl shadow-xl">
-        <p>Hello this is just to check</p>
+        <h1>
+          {" "}
+          Hello, <strong>{user.username}</strong>!
+        </h1>
+        <h1>
+          {" "}
+          <span>
+            {/* Style will be inherited from the parent element */}
+            <Typewriter
+              words={[
+                "Welcome to openAI 2.0",
+                "Step into the future of artificial intelligence and innovation with our groundbreaking project, OpenAI 2.0. We are thrilled to invite you to join us on this incredible journey as we push the boundaries of what is possible in the realm of AI.",
+                "Join us on this transformative journey, where innovation knows no bounds. OpenAI 2.0 is your gateway to a world of endless possibilities, where human ingenuity meets artificial intelligence. Together, let's shape the future and unlock new dimensions of human potential.",
+              ]}
+              loop={0}
+              cursor
+              cursorStyle="|"
+              typeSpeed={70}
+              deleteSpeed={10}
+              delaySpeed={1000}
+            />
+          </span>
+        </h1>
+        {/* <p>Hello this is just to check</p> */}
       </div>
       <div className="flex flex-row justify-center items-center">
         <Link
