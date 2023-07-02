@@ -35,7 +35,7 @@ userSchema.statics.signup = async function (name, email, password) {
       "Password must contain 1 small, 1 cap letter, atleast 1 number and a symbol"
     );
   }
-  const exist = await findOne({ email });
+  const exist = await this.findOne({ email });
   if (exist) {
     throw Error(`A user with ${email} already exists`);
   }

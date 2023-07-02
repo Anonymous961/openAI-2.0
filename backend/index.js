@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const userRoutes = require("./routes/users");
 const cors = require("cors");
 
 const {
@@ -17,6 +18,8 @@ app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
+
+app.use("/api/user", userRoutes);
 
 app.post("/openai/meta", generateMeta);
 app.post("/openai/image", generateImage);
