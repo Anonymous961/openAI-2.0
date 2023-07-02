@@ -34,8 +34,8 @@ function App() {
           path="/dall-e"
           element={user ? <Dalle /> : <Navigate to="/login" />}
         />
-        <Route exact path="/signup" element={<Signup />} />
-        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/signup" element={user ? <Home /> : <Signup />} />
+        <Route exact path="/login" element={user ? <Home /> : <Login />} />
       </Routes>
     </Router>
   );
