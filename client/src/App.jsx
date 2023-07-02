@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import GptForm from "./components/gptForm";
@@ -14,9 +19,21 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/chatgpt" element={<GptForm />} />
-        <Route exact path="/dall-e" element={<Dalle />} />
+        <Route
+          exact
+          path="/"
+          element={user ? <Home /> : <Navigate to="/login" />}
+        />
+        <Route
+          exact
+          path="/chatgpt"
+          element={user ? <GptForm /> : <Navigate to="/login" />}
+        />
+        <Route
+          exact
+          path="/dall-e"
+          element={user ? <Dalle /> : <Navigate to="/login" />}
+        />
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/login" element={<Login />} />
       </Routes>

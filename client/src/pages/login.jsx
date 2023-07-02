@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -47,10 +48,14 @@ const Login = () => {
                 </span>
               </div>
             )}
-            {!isLoading && <p>Sign up</p>}
+            {!isLoading && <p>Login</p>}
           </button>
         </form>
         <div className="flex justify-center">
+          <p>New user ?</p>
+          <Link className="text-green-500 underline mx-1" to="/signup">
+            signup
+          </Link>
           {error && (
             <p className="text-red-500 text-center border-2 w-2/3 border-red-500 p-3 rounded-md">
               {error}

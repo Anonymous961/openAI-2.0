@@ -9,6 +9,11 @@ const Navbar = () => {
   const handleClick = () => {
     logout();
   };
+  const checkUser = () => {
+    if (!user) {
+      alert("User need to login first");
+    }
+  };
   return (
     <div className="navbar h-24 bg-indigo-500 items-center grid grid-cols-2 gap-5">
       <h1
@@ -21,10 +26,10 @@ const Navbar = () => {
       </h1>
       <div className="navs">
         <ul className="flex justify-evenly items-center text-xl text-white">
-          <li className=" mx-2 ">
+          <li className=" mx-2 " onClick={checkUser}>
             <Link to="/chatgpt">Chatgpt</Link>
           </li>
-          <li className="mx-2">
+          <li className="mx-2" onClick={checkUser}>
             <Link to="/dall-e">Dall-e</Link>
           </li>
           {user && (

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -61,6 +62,10 @@ const Signup = () => {
           </button>
         </form>
         <div className="flex justify-center">
+          <p>Already an user ?</p>
+          <Link className="text-green-500 underline mx-1" to="/login">
+            login
+          </Link>
           {error && (
             <p className="text-red-500 text-center border-2 w-2/3 border-red-500 p-3 rounded-md">
               {error}
