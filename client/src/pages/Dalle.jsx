@@ -10,7 +10,7 @@ const Dalle = () => {
     setUrl("");
     setIsLoading(true);
     const response = await axios.post(
-      "http://localhost:4000/openai/image",
+      import.meta.env.VITE_APP_API_URL + "/openai/image",
       {
         prompt,
       },

@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
-import GptForm from "./components/gptForm";
+import GptForm from "./pages/gptForm";
 import Navbar from "./components/navbar";
 import Dalle from "./pages/Dalle";
 import Signup from "./pages/signup";

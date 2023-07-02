@@ -6,12 +6,13 @@ const GptForm = () => {
   const [title, setTitle] = useState("");
   const [data, setData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  console.log(import.meta.env.VITE_APP_API_URL);
   const handleClick = async (e) => {
     e.preventDefault();
     setData("");
     setIsLoading(true);
     const response = await axios.post(
-      "http://localhost:4000/openai/meta",
+      import.meta.env.VITE_APP_API_URL + "/openai/meta",
       {
         title,
       },
