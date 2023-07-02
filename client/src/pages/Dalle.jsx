@@ -9,7 +9,6 @@ const Dalle = () => {
     e.preventDefault();
     setUrl("");
     setIsLoading(true);
-    // console.log(prompt);
     const response = await axios.post(
       "http://localhost:4000/openai/image",
       {
@@ -19,7 +18,6 @@ const Dalle = () => {
         headers: { "Content-Type": "application/json" },
       }
     );
-    // console.log(response.data);
     setUrl(response.data.url);
     setIsLoading(false);
   };

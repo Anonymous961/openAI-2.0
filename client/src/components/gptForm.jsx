@@ -6,11 +6,9 @@ const GptForm = () => {
   const [title, setTitle] = useState("");
   const [data, setData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  // const [towrite, setTowrite] = useState([]);
   const handleClick = async (e) => {
     e.preventDefault();
     setData("");
-    // setTowrite([data]);
     setIsLoading(true);
     const response = await axios.post(
       "http://localhost:4000/openai/meta",
@@ -45,7 +43,6 @@ const GptForm = () => {
           <h1>
             {" "}
             <span>
-              {/* Style will be inherited from the parent element */}
               <Typewriter
                 words={[data]}
                 loop={0}
@@ -59,7 +56,6 @@ const GptForm = () => {
           </h1>
         )}
 
-        {/* <p className="typing-animation">{data}</p> */}
         {data && (
           <button
             className="bg-green-200 p-4 rounded-md shadow-md transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-300 duration-300"
