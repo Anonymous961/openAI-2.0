@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const mongoose = require("mongoose");
 const cors = require("cors");
 
 const {
@@ -16,9 +17,14 @@ app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
+
 app.post("/openai/meta", generateMeta);
 app.post("/openai/image", generateImage);
 // console.log(process.env.OPENAI_API_KEY);
-app.listen(4000, () => {
-  console.log("server is running on port 4000");
+
+mongoose.connect(process.env.URI).then(() => {
+  console.log("connected to DB");
+  app.listen(4000, () => {
+    console.log("server is running on port 4000");
+  });
 });
