@@ -1,7 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useLogout } from "../hooks/useLogout";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { logout } = useLogout();
+  const { user } = useAuthContext();
+  const handleClick = () => {
+    logout();
+  };
   return (
     <div className="navbar h-24 bg-indigo-500 items-center grid grid-cols-2 gap-5">
       <h1
@@ -20,6 +27,14 @@ const Navbar = () => {
           <li className="mx-2">
             <Link to="/dall-e">Dall-e</Link>
           </li>
+          {user && (
+            <button
+              className="border-2 p-2 rounded-md hover:text-red-500 "
+              onClick={handleClick}
+            >
+              Logout
+            </button>
+          )}
         </ul>
       </div>
     </div>
