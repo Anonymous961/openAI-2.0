@@ -67,8 +67,18 @@ const GptForm = () => {
         )}
       </div>
       <div className="mx-5">
-        <h1 className="text-5xl font-bold text-indigo-600 my-10">Chatgpt</h1>
-        <form onSubmit={handleClick} className=" flex flex-col ">
+        <h1 className="text-5xl font-bold text-cyan-300 my-6">Chatgpt</h1>
+        <p className="text-slate-200 my-4 w-80">
+          Language model, conversational AI, text generation, deep learning,
+          natural language understanding.
+        </p>
+        <div>
+          <p className="text-white border-2 p-2 rounded-md w-80">
+            <strong>NOTE :</strong>
+            If the page is taking too long to load, please try reloading it.
+          </p>
+        </div>
+        <form onSubmit={handleClick} className=" flex flex-col my-2">
           <label className="text-xl text-white">Ask anything</label>
           <input
             type="text"
@@ -78,7 +88,7 @@ const GptForm = () => {
               setTitle(e.target.value);
             }}
             required
-            placeholder="generate a email for friend"
+            placeholder="Generate 10 creative ideas"
           />
           <input
             type="submit"

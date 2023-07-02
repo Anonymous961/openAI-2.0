@@ -24,7 +24,10 @@ const Dalle = () => {
   return (
     <div className="dalle grid grid-cols-3 bg-cover px-5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen py-10">
       <div>
-        <h1 className="text-5xl font-bold text-pink-500 my-10">Dall-e</h1>
+        <h1 className="text-5xl font-bold text-pink-500 my-5">Dall-e</h1>
+        <p className="text-white my-4 w-80">
+          DALL-E: AI artist creating stunning images from textual descriptions.
+        </p>
         <form onSubmit={handleSubmit} className="flex flex-col">
           <label className="text-xl text-white">Ask for anything</label>
           <input
