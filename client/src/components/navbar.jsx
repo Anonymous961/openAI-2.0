@@ -20,8 +20,13 @@ const Navbar = () => {
         onClick={() => {
           navigate("/");
         }}
-        className="text-5xl font-bold mx-10 text-gray-50"
+        className="text-5xl font-bold mx-10 text-gray-50 flex items-center"
       >
+        <img
+          src="https://i.postimg.cc/FzxwzGqS/open-AIlogo.png"
+          className="w-12 h-12 m-1"
+          alt=""
+        />
         OpenAI
       </h1>
       <div className="navs">
