@@ -6,8 +6,10 @@ import Navbar from "./components/navbar";
 import Dalle from "./pages/Dalle";
 import Signup from "./pages/signup";
 import Login from "./pages/login";
+import { useAuthContext } from "./hooks/useAuthContext";
 
 function App() {
+  const { user } = useAuthContext();
   return (
     <Router>
       <Navbar />
