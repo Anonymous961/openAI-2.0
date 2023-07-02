@@ -6,7 +6,7 @@ const GptForm = () => {
   const [title, setTitle] = useState("");
   const [data, setData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  console.log(import.meta.env.VITE_APP_API_URL);
+  // console.log(import.meta.env.VITE_APP_API_URL);
   const handleClick = async (e) => {
     e.preventDefault();
     setData("");
