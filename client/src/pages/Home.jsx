@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="home bg-gradient-to-r from-indigo-500 to-orange-500 min-h-screen py-10">
+    <div className="home bg-gradient-to-r from-indigo-500 to-orange-500 min-h-screen py-10 flex flex-col items-center">
       {/* <h1 className="text-4xl font-bold text-slate-200 m-5 mx-11">Home</h1> */}
+      <div className="bg-slate-200 w-2/3 p-8 mb-3 rounded-xl shadow-xl">
+        <p>Hello this is just to check</p>
+      </div>
       <div className="flex flex-row justify-center items-center">
         <Link
           to="/chatgpt"

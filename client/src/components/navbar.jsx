@@ -33,14 +33,17 @@ const Navbar = () => {
             <li className="mx-2" onClick={checkUser}>
               <Link to="/dall-e">Dall-e</Link>
             </li>
-            {user && (
-              <button
-                className="border-2 p-2 rounded-md hover:text-red-500 "
-                onClick={handleClick}
-              >
-                Logout
-              </button>
-            )}
+            <li className="flex items-center">
+              <p className="mx-2">Hello, {user.username}</p>
+              {user && (
+                <button
+                  className="border-2 p-2 rounded-md hover:text-orange-200 bg-red-400 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-500 duration-300"
+                  onClick={handleClick}
+                >
+                  Logout
+                </button>
+              )}
+            </li>
           </ul>
         ) : (
           <ul className="flex justify-evenly items-center text-xl text-white">

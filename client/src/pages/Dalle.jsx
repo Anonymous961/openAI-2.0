@@ -37,7 +37,7 @@ const Dalle = () => {
             required
             placeholder="a cute chick"
           />
-          <input type="file" />
+          {/* <input type="file" /> */}
           <input
             type="submit"
             className=" shadow-2xl py-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-500 duration-300 text-white  rounded-lg w-80 bg-sky-500"
