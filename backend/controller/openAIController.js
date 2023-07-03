@@ -5,22 +5,30 @@ const generateMeta = async (req, res) => {
   // console.log(req.body);
   // console.log(title);
   // res.status(200).json({ message: "helloo message received!" });
-  const response = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo",
-    messages: [{ role: "user", content: `${title}` }],
-  });
+  try {
+    const response = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: `${title}` }],
+    });
 
-  res.status(200).json({ message: response.data.choices[0].message });
+    res.status(200).json({ message: response.data.choices[0].message });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
 };
 
 const generateImage = async (req, res) => {
   const { prompt } = req.body;
-  const response = await openai.createImage({
-    prompt: prompt,
-    n: 2,
-    size: "1024x1024",
-  });
+  try {
+    const response = await openai.createImage({
+      prompt: prompt,
+      n: 2,
+      size: "1024x1024",
+    });
 
-  res.status(200).json({ url: response.data.data[0].url });
+    res.status(200).json({ url: response.data.data[0].url });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
 };
 module.exports = { generateMeta, generateImage };
