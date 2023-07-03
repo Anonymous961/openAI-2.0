@@ -13,6 +13,7 @@ const generateMeta = async (req, res) => {
 
     res.status(200).json({ message: response.data.choices[0].message });
   } catch (err) {
+    console.log(err);
     res.status(400).json({ error: err.message });
   }
 };
@@ -28,6 +29,7 @@ const generateImage = async (req, res) => {
 
     res.status(200).json({ url: response.data.data[0].url });
   } catch (err) {
+    console.log(err);
     res.status(400).json({ error: err.message });
   }
 };
