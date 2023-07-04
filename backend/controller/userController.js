@@ -23,7 +23,7 @@ const signupUser = async (req, res) => {
     await sendEmail(
       user.email,
       "Verify Email",
-      `Dear ${user.name},\n\n I hope you're doing well. Thanks for showing you interest in OpenAI 2.0. I highly appreciate your enthusiasm.\n\n Here is your verfication link:- ` +
+      `Dear ${user.name},\n\n I hope you're doing well. Thanks for showing your interest in OpenAI 2.0. I highly appreciate your enthusiasm.\n\n Here is your verfication link:- ` +
         url +
         "\n\n  Thank you for using OpenAI 2.0. I appreciate your cooperation in completing the verification process.\n\n\nBest regards,\nAnil Kumar Behera\nOpenAI 2.0"
     );
@@ -82,7 +82,13 @@ const loginUser = async (req, res) => {
         }).save();
         console.log("no token");
         const url = `${process.env.BASE_URL}user/${user._id}/verify/${token1.token}`;
-        await sendEmail(user.email, "Verify Email", url);
+        await sendEmail(
+          user.email,
+          "Verify Email",
+          `Dear ${user.name},\n\n I hope you're doing well. Thanks for showing your interest in OpenAI 2.0. I highly appreciate your enthusiasm.\n\n Here is your verfication link:- ` +
+            url +
+            "\n\n  Thank you for using OpenAI 2.0. I appreciate your cooperation in completing the verification process.\n\n\nBest regards,\nAnil Kumar Behera\nOpenAI 2.0"
+        );
       }
       return res
         .status(401)
