@@ -44,7 +44,7 @@ function App() {
         />
         {/* <Route exact path="/check" element={<Check />} /> */}
         <Route exact path="/user/:id/verify/:token" element={<Check />} />
-        <Route path="/user" element={<Check2 />} />
+        <Route exact path="/user" element={<Check2 />} />
       </Routes>
     </Router>
   );
