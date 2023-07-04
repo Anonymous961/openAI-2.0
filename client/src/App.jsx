@@ -37,11 +37,7 @@ function App() {
           element={user ? <Dalle /> : <Navigate to="/login" />}
         />
         <Route exact path="/signup" element={<Signup />} />
-        <Route
-          exact
-          path="/login"
-          element={user ? <Navigate to="/" /> : <Login />}
-        />
+        <Route exact path="/login" element={<Login />} />
         {/* <Route exact path="/check" element={<Check />} /> */}
         <Route exact path="/user/:id/verify/:token" element={<Check />} />
         <Route exact path="/user" element={<Check2 />} />
