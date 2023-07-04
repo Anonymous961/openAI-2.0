@@ -13,6 +13,7 @@ import Signup from "./pages/signup";
 import Login from "./pages/login";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Check from "./pages/check";
+import Check2 from "./pages/check2";
 
 function App() {
   const { user } = useAuthContext();
@@ -42,7 +43,8 @@ function App() {
           element={user ? <Navigate to="/" /> : <Login />}
         />
         {/* <Route exact path="/check" element={<Check />} /> */}
-        <Route path="/user/:id/verify/:token" element={<Check />} />
+        <Route exact path="/user/:id/verify/:token" element={<Check />} />
+        <Route path="/user/:id" element={<Check2 />} />
       </Routes>
     </Router>
   );
