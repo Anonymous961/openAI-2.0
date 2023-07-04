@@ -12,6 +12,7 @@ import Dalle from "./pages/Dalle";
 import Signup from "./pages/signup";
 import Login from "./pages/login";
 import { useAuthContext } from "./hooks/useAuthContext";
+import Check from "./pages/check";
 
 function App() {
   const { user } = useAuthContext();
@@ -34,8 +35,14 @@ function App() {
           path="/dall-e"
           element={user ? <Dalle /> : <Navigate to="/login" />}
         />
-        <Route exact path="/signup" element={user ? <Home /> : <Signup />} />
-        <Route exact path="/login" element={user ? <Home /> : <Login />} />
+        <Route exact path="/signup" element={<Signup />} />
+        <Route
+          exact
+          path="/login"
+          element={user ? <Navigate to="/" /> : <Login />}
+        />
+        {/* <Route exact path="/check" element={<Check />} /> */}
+        <Route path="/user/:id/verify/:token" element={<Check />} />
       </Routes>
     </Router>
   );

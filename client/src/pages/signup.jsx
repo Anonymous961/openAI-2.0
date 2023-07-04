@@ -1,16 +1,20 @@
 import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { signup, isLoading, error } = useSignup();
+  const { signup, isLoading, error, msg } = useSignup();
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     await signup(name, email, password);
     console.log(error);
+    setTimeout(() => {
+      navigate("/login");
+    }, 10000);
   };
   return (
     <div className="flex justify-center min-h-screen bg-gradient-to-r from-cyan-200 to-blue-400 ">
@@ -61,11 +65,16 @@ const Signup = () => {
             {!isLoading && <p>Sign up</p>}
           </button>
         </form>
-        <div className="flex justify-center">
+        <div className="flex justify-center flex-col items-center">
           <p>Already an user ?</p>
           <Link className="text-green-500 underline mx-1" to="/login">
             login
           </Link>
+          {msg && (
+            <p className="text-green-500 border-2 border-green-500 p-4 rounded-md my-2">
+              {msg}
+            </p>
+          )}
           {error && (
             <p className="text-red-500 text-center border-2 w-2/3 border-red-500 p-3 rounded-md">
               {error}

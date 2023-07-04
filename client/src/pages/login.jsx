@@ -1,15 +1,27 @@
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 import { Link } from "react-router-dom";
+// import { useAuthContext } from "../hooks/useAuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, isLoading, error } = useLogin();
+  const { login, isLoading, error, msg } = useLogin();
+  // const { user } = useAuthContext();
+  // const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email, password);
+    // setTimeout(()=>{
+    // navigate('/');
+    // },)
+    // if (user) {
+    //   navigate("/");
+    // }
   };
+  // useEffect(() => {
+  //   navigate("/");
+  // }, [user]);
   return (
     <div className="flex justify-center min-h-screen bg-gradient-to-r from-cyan-200 to-blue-400 ">
       <div className="flex flex-col h-5/6 w-1/2  p-10 m-10 bg-slate-300 shadow-lg rounded-md">
@@ -51,11 +63,16 @@ const Login = () => {
             {!isLoading && <p>Login</p>}
           </button>
         </form>
-        <div className="flex justify-center">
+        <div className="flex justify-center flex-col items-center">
           <p>New user ?</p>
           <Link className="text-green-500 underline mx-1" to="/signup">
             signup
           </Link>
+          {msg && (
+            <p className="text-green-500 border-2 border-green-500 p-4 rounded-md my-2">
+              {msg}
+            </p>
+          )}
           {error && (
             <p className="text-red-500 text-center border-2 w-2/3 border-red-500 p-3 rounded-md">
               {error}

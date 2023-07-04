@@ -1,11 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
-import { useAuthContext } from "./useAuthContext";
+// import { useAuthContext } from "./useAuthContext";
 
 export const useSignup = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const { dispatch } = useAuthContext();
+  const [msg, setMsg] = useState("");
+  // const { dispatch } = useAuthContext();
 
   const signup = async (name, email, password) => {
     setIsLoading(true);
@@ -21,8 +22,10 @@ export const useSignup = () => {
         }
       );
 
-      localStorage.setItem("user", JSON.stringify(response.data));
-      dispatch({ type: "LOGIN", payload: response.data });
+      console.log(response.data.message);
+      setMsg(response.data.message);
+      // localStorage.setItem("user", JSON.stringify(response.data));
+      // dispatch({ type: "LOGIN", payload: response.data });
       setIsLoading(false);
       setError(null);
     } catch (error) {
@@ -31,5 +34,5 @@ export const useSignup = () => {
     }
   };
 
-  return { signup, isLoading, error };
+  return { signup, isLoading, error, msg };
 };
