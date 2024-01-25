@@ -23,6 +23,13 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
+### Environment
+- **Node.js Version:** [Specify the version of Node.js]
+- **MongoDB Version:** [Specify the version of MongoDB]
+- **React Version:** [Specify the version of React]
+- **Express Version:** [Specify the version of Express]
+- **Other relevant dependencies and versions:** [List any other important dependencies and their versions]
+
 **Desktop (please complete the following information):**
  - OS: [e.g. iOS]
  - Browser [e.g. chrome, safari]
